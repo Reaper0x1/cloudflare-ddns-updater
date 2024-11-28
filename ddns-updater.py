@@ -45,9 +45,7 @@ class CustomFileHandler(logging.FileHandler):
 
     def set_owner_group(self, filename, user, group):
         try:
-            uid = pwd.getpwnam(user).pw_uid
-            gid = grp.getgrnam(group).gr_gid
-            os.chown(filename, uid, gid)
+            os.chown(filename, user, group)
         except KeyError as e:
             print(f"User not found: {e}")
         except PermissionError as e:
