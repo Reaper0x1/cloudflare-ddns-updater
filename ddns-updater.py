@@ -34,6 +34,12 @@ SCHEDULER_ERROR_LOG_PATH = os.path.join(LOG_FOLDER, "scheduler.log")
 if not os.path.exists(LOG_FOLDER):
     os.makedirs(LOG_FOLDER)
 
+if isinstance(PUID, str):
+    PUID = int(PUID)
+
+if isinstance(PGID, str):
+    PGID = int(PGID)
+
 
 class CustomFileHandler(logging.FileHandler):
     def __init__(
@@ -46,11 +52,6 @@ class CustomFileHandler(logging.FileHandler):
 
     def set_owner_group(self, filename, user, group):
         try:
-            if isinstance(user, str):
-                user = int(user)
-
-            if isinstance(group, str):
-                group = int(group)
             os.chown(filename, user, group)
         except KeyError as e:
             print(f"User not found: {e}")
