@@ -64,21 +64,21 @@ services:
     environment:
         # Put your cron schedule. 
         # You can generate one at https://crontab.guru/
-        - CRON_SCHEDULE="0 */6 * * *"
+        - CRON_SCHEDULE=0 */6 * * *
         # Your timezone
-        - TZ="Europe/Berlin"
+        - TZ=Europe/Berlin
         # Cloudflare
-        - ZONE="site.com"
-        - DNS_RECORD="site.com"
-        - CLOUDFLARE_AUTH_EMAIL="mail@mail.com"
-        - CLOUDFLARE_AUTH_KEY="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+        - ZONE=site.com
+        - DNS_RECORD=site.com
+        - CLOUDFLARE_AUTH_EMAIL=mail@mail.com
+        - CLOUDFLARE_AUTH_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
         # Set to true if you want to export the json response error during the update of A Record
-        - EXPORT_CF_UPDATE_ERROR_LOGS="false"
+        - EXPORT_CF_UPDATE_ERROR_LOGS=false
         # Set to true if you want to start the script at the start of the container
-        - EXECUTE_AT_START="false"
+        - EXECUTE_AT_START=false
         # The users belongs to files.
-        - PUID="1000"
-        - PGID="1000"
+        - PUID=1000
+        - PGID=1000
     # Comment out the following two lines if logs are not needed
     volumes:
       - ./logs:/app/logs
