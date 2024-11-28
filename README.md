@@ -4,7 +4,7 @@ Automatically update your Cloudflare A Record.
   <img src="logo.png" alt=""/>
 </p>
 
-[![Docker Image - 1.0.0](https://img.shields.io/docker/v/reaper0x1/cloudflare-ddns-updater/latest?logo=docker&label=Docker%20Image)](https://hub.docker.com/r/reaper0x1/bitwarden-portal)
+[![Docker Image - 1.0.0](https://img.shields.io/docker/v/reaper0x1/cloudflare-ddns-updater/latest?logo=docker&label=Docker%20Image)](https://hub.docker.com/r/reaper0x1/cloudflare-ddns-updater)
 [![Github - Official](https://img.shields.io/badge/Github-Official-2dba4e?logo=github)](https://github.com/Reaper0x1/cloudflare-ddns-updater)
 ![Shell](https://img.shields.io/badge/Shell_Script-121011?style=flat&logo=gnu-bash&logoColor=white)
 
