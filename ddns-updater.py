@@ -34,12 +34,20 @@ SCHEDULER_ERROR_LOG_PATH = os.path.join(LOG_FOLDER, "scheduler.log")
 if not os.path.exists(LOG_FOLDER):
     os.makedirs(LOG_FOLDER)
 
+try:
+    PUID = int(PUID)
+    PGID = int(PGID)
+except ValueError:
+    # Handle the exception
+    print("")
+
 
 class CustomFileHandler(logging.FileHandler):
     def __init__(
         self, filename, mode="a", encoding=None, delay=False, user=None, group=None
     ):
         super().__init__(filename, mode, encoding, delay)
+
         if user and group:
             self.set_owner_group(filename, user, group)
 
