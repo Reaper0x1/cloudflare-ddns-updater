@@ -4,9 +4,7 @@ FROM python:3.11-alpine
 ENV TZ="Europe/Berlin"
 
 # Install tzdata
-RUN apk add --no-cache tzdata && \
-    ln -sf /usr/share/zoneinfo/$TZ /etc/localtime && \
-    echo $TZ > /etc/timezone
+RUN apk add --no-cache tzdata 
 
 # Upgrade pip
 RUN pip install --upgrade pip
