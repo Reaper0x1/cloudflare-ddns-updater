@@ -17,8 +17,8 @@ EXPORT_CF_UPDATE_ERROR_LOGS = (
 )
 EXECUTE_AT_START = os.getenv("EXECUTE_AT_START", "false").lower() == "true"
 TZ = os.getenv("TZ", "Europe/Berlin")
-PUID = os.getenv("PUID", "1000")
-PGID = os.getenv("PGID", "1000")
+PUID = os.getenv("PUID", "0")
+PGID = os.getenv("PGID", "0")
 
 
 # Configuration
@@ -28,6 +28,11 @@ CURRENT_TIME = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 LOG_FILE_NAME = f"{CURRENT_DATE}.log"
 LOG_FULL_PATH = os.path.join(LOG_FOLDER, LOG_FILE_NAME)
 SCHEDULER_ERROR_LOG_PATH = os.path.join(LOG_FOLDER, "scheduler.log")
+
+
+# Create logs folder if not exists
+if not os.path.exists(LOG_FOLDER):
+    os.makedirs(LOG_FOLDER)
 
 
 class CustomFileHandler(logging.FileHandler):
