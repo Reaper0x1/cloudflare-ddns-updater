@@ -47,7 +47,7 @@ class CustomFileHandler(logging.FileHandler):
         try:
             uid = pwd.getpwnam(user).pw_uid
             gid = grp.getgrnam(group).gr_gid
-            os.chown(filename, uid, gid)  # Cambia proprietario e gruppo
+            os.chown(filename, uid, gid)
         except KeyError as e:
             print(f"User not found: {e}")
         except PermissionError as e:
@@ -60,7 +60,6 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
     handlers=[
-        # logging.FileHandler(LOG_FULL_PATH),  # File log
         CustomFileHandler(LOG_FULL_PATH, user=PUID, group=PGID),
         logging.StreamHandler(),  # Console log
     ],
