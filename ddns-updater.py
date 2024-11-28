@@ -17,8 +17,8 @@ EXPORT_CF_UPDATE_ERROR_LOGS = (
 )
 EXECUTE_AT_START = os.getenv("EXECUTE_AT_START", "false").lower() == "true"
 TZ = os.getenv("TZ", "Europe/Berlin")
-PUID = int(os.getenv("PUID", "0"))
-PGID = int(os.getenv("PGID", "0"))
+PUID = os.getenv("PUID", 0)
+PGID = os.getenv("PGID", 0)
 
 
 # Configuration
@@ -46,6 +46,11 @@ class CustomFileHandler(logging.FileHandler):
 
     def set_owner_group(self, filename, user, group):
         try:
+            if isinstance(user, str):
+                user = int(user)
+
+            if isinstance(group, str):
+                group = int(group)
             os.chown(filename, user, group)
         except KeyError as e:
             print(f"User not found: {e}")
