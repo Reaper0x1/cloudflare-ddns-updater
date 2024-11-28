@@ -1,0 +1,8 @@
+services:
+  cloudflare-ddns-updater:
+    build: .
+    container_name: cloudflare-ddns-updater
+    env_file: .env
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
