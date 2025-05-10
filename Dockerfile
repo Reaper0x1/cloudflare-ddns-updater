@@ -4,7 +4,7 @@ FROM python:3.11-alpine
 ENV TZ="Europe/Berlin"
 
 # Install tzdata
-RUN apk add --no-cache tzdata 
+RUN apk add --no-cache tzdata bind-tools
 
 # Upgrade pip
 RUN pip install --upgrade pip

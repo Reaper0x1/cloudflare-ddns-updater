@@ -5,6 +5,8 @@ import requests
 from datetime import datetime
 from apscheduler.schedulers.blocking import BlockingScheduler
 import logging
+import subprocess
+
 
 
 # Env variables
@@ -87,11 +89,14 @@ def chown_recursive(path, uid, gid):
 
 # Function to fetch the current public IP address
 def fetch_public_ip():
-    logging.info("Fetching current public IP address...")
-    response = requests.get("https://api64.ipify.org")
-    response.raise_for_status()
-    ip = response.text.strip()
-    logging.info(f"Current public IP address: {ip}")
+    # Digita verso il resolver di OpenDNS
+    result = subprocess.run(
+        ["dig", "+short", "myip.opendns.com", "@resolver1.opendns.com"],
+        capture_output=True,
+        text=True,
+        check=True
+    )
+    ip = result.stdout.strip()
     return ip
 
 
